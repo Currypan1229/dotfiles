@@ -17,6 +17,17 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.opt.number = true
+vim.opt.cursorline = true
+
+vim.api.nvim_create_user_command(
+    'InitLua',
+    function()
+        vim.cmd.edit(vim.fn.stdpath('config') .. '/init.lua')
+    end,
+    {}
+)
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = { { import = "plugins" } },
