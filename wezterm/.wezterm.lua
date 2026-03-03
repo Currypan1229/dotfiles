@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
 local config = wezterm.config_builder()
 
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
@@ -9,12 +10,12 @@ config.automatically_reload_config = true
 config.font_size = 9.5
 config.use_ime = true
 config.macos_window_background_blur = 20
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
-config.color_scheme = 'Tokyo Night'
-config.window_background_opacity = 0.9
-config.text_background_opacity = 0.85
+config.color_scheme = 'Tokyo Night Moon'
+config.window_background_opacity = 0.95
 
-config.window_decorations = 'RESIZE | MACOS_FORCE_SQUARE_CORNERS'
+config.window_decorations = 'RESIZE'
 config.window_frame = {
     border_left_width = '1',
     border_right_width = '1',
@@ -29,7 +30,6 @@ config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
 config.show_new_tab_button_in_tab_bar = false
 config.show_close_tab_button_in_tabs = false
-config.hide_tab_bar_if_only_one_tab = true
 
 config.window_content_alignment = {
     horizontal = 'Center',
@@ -77,5 +77,13 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
         { Text = SOLID_RIGHT_ARROW },
     }
 end)
+
+config.mouse_bindings = {
+    {
+        event = { Down = { streak = 1, button = "Right" } },
+        mods = "NONE",
+        action = act.CopyTo("Clipboard"),
+    },
+}
 
 return config
