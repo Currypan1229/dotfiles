@@ -7,7 +7,9 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "<filetype>" },
-    callback = function() vim.treesitter.start() end,
+--    pattern = { "<filetype>" },
+    group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
+    callback = function(ctx)
+        pcall(vim.treesitter.start)
+    end,
 })
-
