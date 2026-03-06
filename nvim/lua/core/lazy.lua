@@ -28,6 +28,7 @@ require("lazy").setup({
     spec = {
         { import = "plugins.specs.coding" },
         { import = "plugins.specs.editor" },
+        { import = "plugins.specs.lsp" },
         { import = "plugins.specs.treesitter" },
         { import = "plugins.specs.ui" },
     },
@@ -35,4 +36,4 @@ require("lazy").setup({
     checker = { enabled = true },
 })
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")
