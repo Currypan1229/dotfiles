@@ -7,12 +7,26 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-vsnip",
+        "onsails/lspkind.nvim",
+        "folke/noice.nvim",
     },
-    lazy = true,
     config = function()
-        local cmp = require "cmp"
+        local cmp = require("cmp")
+        local lspkind = require("lspkind")
 
         cmp.setup({
+            fields = { "abbr", "icon", "kind", "menu" },
+--            formatting = lspkind.cmp_format({
+--                maxwidth = {
+--                    menu = 50,
+--                    abbr = 50,
+--                },
+--                ellipsis_char = "...",
+--                show_labelDetails = true,
+--                before = function (entry, vim_item)
+--                    return vim_item
+--                end
+--            }),
             snippet = {
                 -- REQUIRED - you must specify a snippet engine
                 expand = function(args)
