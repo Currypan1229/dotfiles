@@ -17,8 +17,15 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.editorconfig = true
 
 vim.o.encoding = "utf-8"
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+-- vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldinner: ,foldclose:'
+
 vim.scriptencoding = "utf-8"
 
 require("lazy").setup({
@@ -26,6 +33,7 @@ require("lazy").setup({
         { import = "plugins.specs.cmp" },
         { import = "plugins.specs.coding" },
         { import = "plugins.specs.editor" },
+        { import = "plugins.specs.git" },
         { import = "plugins.specs.language" },
         { import = "plugins.specs.lsp" },
         { import = "plugins.specs.treesitter" },

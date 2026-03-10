@@ -9,10 +9,17 @@ vim.api.nvim_create_user_command(
 )
 
 vim.api.nvim_create_autocmd("FileType", {
---    pattern = { "<filetype>" },
     group = vim.api.nvim_create_augroup("vim-treesitter-start", {}),
     callback = function(ctx)
         pcall(vim.treesitter.start)
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "neo-tree" },
+    callback = function()
+        require("ufo").detach()
+        vim.opt_local.foldenable = false
     end,
 })
 

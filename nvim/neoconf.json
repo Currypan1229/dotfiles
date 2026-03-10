@@ -1,13 +1,5 @@
 {
     "neoconf": {
-        "plugins": {
-            "blink-cmp": {
-                "enable": true,
-                "setupLspCapabilities": false
-            },
-            "lua_ls": {
-                "enabled": true
-            }
-        }
+        "plugins": {}
     }
 }
