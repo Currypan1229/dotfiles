@@ -28,6 +28,11 @@ vim.o.foldenable = true
 
 vim.scriptencoding = "utf-8"
 
+vim.diagnostic.config({
+    virtual_text = true,
+    underline = true
+})
+
 require("lazy").setup({
     spec = {
         { import = "plugins.specs.cmp" },
