@@ -30,3 +30,28 @@ keymap.set("n", "g*", [[g*<Cmd>lua require("hlslens").start()<CR>]], kopts)
 keymap.set("n", "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], kopts)
 
 keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
+
+keymap.set("", "<f1>", function()
+    if package.loaded["profile"] == nil then
+        vim.notify("Profile.nvim is not loaded")
+        return
+    end
+
+    local prof = require("profile")
+    local default_export_path = vim.fn.stdpath("data") .. "/profile.json"
+
+    if prof.is_recording() then
+        prof.stop()
+        vim.ui.input(
+            { prompt = "Save profile to:", completion = "file", default = default_export_path },
+            function(filename)
+                if filename then
+                    prof.export(filename)
+                    vim.notify(string.format("Wrote %s", filename))
+                end
+            end
+        )
+    else
+        prof.start("*")
+    end
+end)
