@@ -1,3 +1,3 @@
 return {
-    "monaqa/dial.nvim",
+	"monaqa/dial.nvim",
 }

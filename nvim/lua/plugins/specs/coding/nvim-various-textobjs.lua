@@ -4,6 +4,6 @@ return {
 	opts = {
 		keymaps = {
 			useDefaults = true,
-		}
+		},
 	},
-};
+}

@@ -1,3 +1,3 @@
 return {
-    "djoshea/vim-autoread",
+	"djoshea/vim-autoread",
 }

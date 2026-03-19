@@ -1,5 +1,5 @@
 return {
-    "NStefan002/screenkey.nvim",
-    lazy = false,
-    version = "*",
+	"NStefan002/screenkey.nvim",
+	lazy = false,
+	version = "*",
 }

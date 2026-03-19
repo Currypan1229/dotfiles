@@ -1,11 +1,11 @@
 return {
-    "neovim/nvim-lspconfig",
+	"neovim/nvim-lspconfig",
 
-    dependencies = {
-        { "folke/neoconf.nvim", lazy = true, opts = {} },
-    },
+	dependencies = {
+		{ "folke/neoconf.nvim", lazy = true, opts = {} },
+	},
 
-    event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 
-    cmd = { "LspInfo", "LspInstall", "LspStart" },
+	cmd = { "LspInfo", "LspInstall", "LspStart" },
 }
