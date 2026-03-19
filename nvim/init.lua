@@ -1,3 +1,5 @@
+require("core.profile")
+
 vim.loader.enable()
 
 vim.g.mapleader = " "
