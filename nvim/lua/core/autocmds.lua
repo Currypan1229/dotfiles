@@ -1,7 +1,7 @@
 local augroup = vim.api.nvim_create_augroup("lsp/init.lua", {})
 
-vim.api.nvim_create_user_command("InitLua", function()
-    vim.cmd.edit(vim.fn.stdpath("config") .. "/init.lua")
+vim.api.nvim_create_user_command("NvimConfig", function()
+    vim.cmd.edit(vim.fn.stdpath("config"))
 end, {})
 
 vim.api.nvim_create_autocmd("FileType", {
