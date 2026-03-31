@@ -174,6 +174,14 @@ return {
             end,
             desc = "Recent",
         },
+        -- lazygit
+        {
+            "<leader>lg",
+            function()
+                Snacks.lazygit()
+            end,
+            desc = "Toggle LazyGit",
+        },
         -- git
         {
             "<leader>gb",
