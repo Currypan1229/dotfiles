@@ -1,6 +1,7 @@
 require("catppuccin").setup({
     flavour = "frappe",
     auto_integrations = true,
+    transparent_background = true,
     integrations = {
         barbar = true,
         colorful_winsep = { color = "lavender" },
