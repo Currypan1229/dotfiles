@@ -9,6 +9,7 @@ require("mason-tool-installer").setup({
         "shfmt",
         "google-java-format",
         "sql-formatter",
+        "marksman",
     },
     auto_install = true,
     run_on_start = true,
