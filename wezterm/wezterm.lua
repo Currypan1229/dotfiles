@@ -104,11 +104,23 @@ config.leader = {
 ----------------------------------------------------
 
 config.font_size = 8
+config.font = wezterm.font_with_fallback({{
+    family = "RobotoMono Nerd Font",
+    weight = "Regular"
+}, {
+    family = "MS Gothic"
+}})
+config.harfbuzz_features = {"calt=0", "clig=0", "liga=0"}
 config.use_ime = true
 config.window_background_opacity = 0.5
 config.macos_window_background_blur = 20
 config.initial_cols = 180
 config.initial_rows = 50
+
+wezterm.on("gui-startup", function()
+    local _, main_pane, window = wezterm.mux.spawn_window({})
+    window:gui_window():maximize()
+end)
 
 ----------------------------------------------------
 -- Terminal Customizer
