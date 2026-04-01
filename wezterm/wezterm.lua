@@ -132,8 +132,33 @@ local wallpaper_cfg = wallpaper.create_config()
 wallpaper_cfg.paths = {'D:\\Wallpapers'}
 wallpaper_cfg.interval = 30
 wallpaper_cfg.max_depth = 5
-wallpaper_cfg.opacity = 0.7
-wallpaper_cfg.brightness = 0.025
+wallpaper_cfg.opacity = 0.6
+
+local gradient_layer = {
+    source = {
+        Gradient = {
+            colors = {"#3c4257"},
+            orientation = {
+                Linear = {
+                    angle = -30.0
+                }
+            }
+        }
+    },
+    opacity = 0.7,
+    width = "100%",
+    height = "100%"
+}
+local cover_layer = {
+    source = {
+        Color = "#000000"
+    },
+    opacity = 0.6,
+    width = "100%",
+    height = "100%"
+}
+
+wallpaper_cfg.layers = {'image_layer', cover_layer, gradient_layer}
 
 -- 背景自動更新の設定を実行
 wallpaper.setup(wallpaper_cfg)

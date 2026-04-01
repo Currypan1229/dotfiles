@@ -1,6 +1,11 @@
 local wezterm = require 'wezterm'
 local M = {}
 
+---Terminal configuration module for WezTerm.
+---@class TerminalConfig
+---@field terminal string The terminal type (e.g., "pwsh", "powershell").
+---@field customizer string The prompt customizer to use (e.g., "oh-my-posh", "starship").
+---@field style string The style configuration for the customizer.
 local TerminalConfig = {
     terminal = nil,
     customizer = nil, -- "oh-my-posh" or "starship"
