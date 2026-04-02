@@ -22,6 +22,10 @@ require("catppuccin").setup({
 
             NeoTreeMessage = {
                 fg = colors.subtext0
+            },
+
+            CursorColumn = {
+                bg = colors.sky
             }
         }
     end
