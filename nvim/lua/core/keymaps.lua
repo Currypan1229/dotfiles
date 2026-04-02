@@ -31,6 +31,10 @@ keymap.set("n", "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], kopts)
 
 keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
 
+keymap.set("n", "r", vim.lsp.buf.rename, {
+    desc = "Rename field"
+})
+
 keymap.set("", "<f1>", function()
     local prof = package.loaded["profile"]
     if prof == nil then
