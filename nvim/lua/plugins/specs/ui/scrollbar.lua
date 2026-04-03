@@ -1,6 +1,7 @@
 return {
     "petertriho/nvim-scrollbar",
+    event = { "VeryLazy" },
     config = function()
-        require("scrollbar").setup();
-    end
+        require("plugins.config.ui.scrollbar")
+    end,
 }
