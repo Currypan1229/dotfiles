@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 local kopts = { noremap = true, silent = true }
 
-keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
+keymap.set("n", "<leader>sn", "<cmd>noh<cr>", kopts)
 
 keymap.set("", "<f1>", function()
     local prof = package.loaded["profile"]
