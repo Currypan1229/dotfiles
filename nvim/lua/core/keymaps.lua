@@ -1,54 +1,7 @@
 local keymap = vim.keymap
 local kopts = { noremap = true, silent = true }
 
-keymap.set("n", "[c", function()
-    require("treesitter-context").go_to_context(vim.v.count1)
-end, { silent = true })
-
--- keymap.set({"i", "v", "x", "o", "t", "c"}, "<A-Space>", "<esc>")
-
-keymap.set("n", "j", "<Plug>(accelerated_jk_gj)", {})
-keymap.set("n", "k", "<Plug>(accelerated_jk_gk)", {})
-
-keymap.set("n", "zR", [[<Cmd>lua require("ufo").openAllFolds()<CR>]], kopts)
-keymap.set("n", "zM", [[<Cmd>lua require("ufo").closeAllFolds()<CR>]], kopts)
-
-keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
-    desc = "Jump to LSP symbol",
-    silent = true,
-})
-keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
-    desc = "LSP Symbols - Workspace",
-    silent = true,
-})
-
-keymap.set("n", "n", [[<Cmd>execute("normal! " . v:count1 . "n")<CR><Cmd>lua require("hlslens").start()<CR>]], kopts)
-keymap.set("n", "N", [[<Cmd>execute("normal! " . v:count1 . "N")<CR><Cmd>lua require("hlslens").start()<CR>]], kopts)
-keymap.set("n", "*", [[*<Cmd>lua require("hlslens").start()<CR>]], kopts)
-keymap.set("n", "#", [[#<Cmd>lua require("hlslens").start()<CR>]], kopts)
-keymap.set("n", "g*", [[g*<Cmd>lua require("hlslens").start()<CR>]], kopts)
-keymap.set("n", "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], kopts)
-
 keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
-
-keymap.set("n", "yr", vim.lsp.buf.rename, {
-    desc = "Rename field"
-})
-keymap.set("n", "yu", vim.lsp.buf.references, {
-    desc = "Show references"
-})
-keymap.set("n", "yji", vim.lsp.buf.definition, {
-    desc = "Jump to definition"
-})
-keymap.set("n", "yje", vim.lsp.buf.declaration, {
-    desc = "Jump to declaration"
-})
-keymap.set("n", "yjo", vim.lsp.buf.implementation, {
-    desc = "Jump to implementation"
-})
-keymap.set("n", "yjt", vim.lsp.buf.type_definition, {
-    desc = "Jump to type definition"
-})
 
 keymap.set("", "<f1>", function()
     local prof = package.loaded["profile"]
