@@ -31,8 +31,23 @@ keymap.set("n", "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], kopts)
 
 keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
 
-keymap.set("n", "r", vim.lsp.buf.rename, {
+keymap.set("n", "yr", vim.lsp.buf.rename, {
     desc = "Rename field"
+})
+keymap.set("n", "yu", vim.lsp.buf.references, {
+    desc = "Show references"
+})
+keymap.set("n", "yji", vim.lsp.buf.definition, {
+    desc = "Jump to definition"
+})
+keymap.set("n", "yje", vim.lsp.buf.declaration, {
+    desc = "Jump to declaration"
+})
+keymap.set("n", "yjo", vim.lsp.buf.implementation, {
+    desc = "Jump to implementation"
+})
+keymap.set("n", "yjt", vim.lsp.buf.type_definition, {
+    desc = "Jump to type definition"
 })
 
 keymap.set("", "<f1>", function()
