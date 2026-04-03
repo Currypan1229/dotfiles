@@ -29,29 +29,30 @@ keymap.set("n", "#", [[#<Cmd>lua require("hlslens").start()<CR>]], kopts)
 keymap.set("n", "g*", [[g*<Cmd>lua require("hlslens").start()<CR>]], kopts)
 keymap.set("n", "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], kopts)
 
-keymap.set("n", "<Leader>l", "<Cmd>noh<CR>", kopts)
+keymap.set("n", "<leader>sn", "<cmd>noh<cr>", kopts)
 
-keymap.set("n", "yr", vim.lsp.buf.rename, {
+keymap.set("n", "<leader>lr", vim.lsp.buf.rename, {
     desc = "Rename field"
 })
-keymap.set("n", "yu", vim.lsp.buf.references, {
+keymap.set("n", "<leader>lsu", vim.lsp.buf.references, {
     desc = "Show references"
 })
-keymap.set("n", "yji", vim.lsp.buf.definition, {
+keymap.set("n", "<leader>ljd", vim.lsp.buf.definition, {
     desc = "Jump to definition"
 })
-keymap.set("n", "yje", vim.lsp.buf.declaration, {
+keymap.set("n", "<leader>lji", vim.lsp.buf.declaration, {
     desc = "Jump to declaration"
 })
-keymap.set("n", "yjo", vim.lsp.buf.implementation, {
+keymap.set("n", "<leader>lje", vim.lsp.buf.implementation, {
     desc = "Jump to implementation"
 })
-keymap.set("n", "yjt", vim.lsp.buf.type_definition, {
+keymap.set("n", "<leader>ljt", vim.lsp.buf.type_definition, {
     desc = "Jump to type definition"
 })
 
-keymap.set("n", "<leader>ot", ":ToggleTerm", {
-    desc = "Toggle Terminal"
+keymap.set("n", "<leader>ot", ":ToggleTerm<cr>", {
+    desc = "Toggle Terminal",
+    silent = true
 })
 
 keymap.set("", "<f1>", function()
