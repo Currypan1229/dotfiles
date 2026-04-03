@@ -9,7 +9,7 @@ local M = {}
 local TerminalConfig = {
     terminal = nil,
     customizer = nil, -- "oh-my-posh" or "starship"
-    style = nil -- Style customize config for constomizer
+    style = nil       -- Style customize config for constomizer
 }
 TerminalConfig.__index = TerminalConfig
 
@@ -18,7 +18,7 @@ function M.create_config()
     return self
 end
 
-function M.setup(config, wezter_config)
+function M.setup(config, wezterm_config)
     wezterm.log_info("Setting up terminal configuration...")
     if config.terminal == nil then
         wezterm.log_error("Terminal type is not specified in the configuration.")
@@ -32,8 +32,8 @@ function M.setup(config, wezter_config)
 
             if config.terminal == "pwsh" or config.terminal == "powershell" then
                 local exe = (config.terminal == "pwsh") and "pwsh.exe" or "powershell.exe"
-                wezter_config.default_prog = {exe, "-NoExit", "-ExecutionPolicy", "Bypass", "-File", script_path,
-                                              style_path}
+                wezterm_config.default_prog = { exe, "-NoExit", "-ExecutionPolicy", "Bypass", "-File", script_path,
+                    style_path }
             end
         elseif (config.customizer == "starship") then
             local script_path = wezterm.config_dir .. "/terminal/scripts/starship/powershell.ps1"
@@ -41,12 +41,8 @@ function M.setup(config, wezter_config)
 
             if config.terminal == "pwsh" or config.terminal == "powershell" then
                 local exe = (config.terminal == "pwsh") and "pwsh.exe" or "powershell.exe"
-
-                wezterm.log_info("cmd: " .. exe .. " -NoExit -ExecutionPolicy Bypass -File " .. script_path .. " " ..
-                                     style_path)
-
-                wezter_config.default_prog = {exe, "-NoExit", "-ExecutionPolicy", "Bypass", "-File", script_path,
-                                              style_path}
+                wezterm_config.default_prog = { exe, "-NoExit", "-ExecutionPolicy", "Bypass", "-File", script_path,
+                    style_path }
             end
         end
     end

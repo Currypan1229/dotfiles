@@ -21,7 +21,7 @@ config.window_frame = {
 
 -- タブバーを背景色に合わせる
 config.window_background_gradient = {
-    colors = {"#000000"}
+    colors = { "#000000" }
 }
 
 -- タブの追加ボタンを非表示
@@ -53,7 +53,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     end
     local edge_foreground = background
     local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
-    return {{
+    return { {
         Background = {
             Color = edge_background
         }
@@ -83,7 +83,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
         }
     }, {
         Text = SOLID_RIGHT_ARROW
-    }}
+    } }
 end)
 
 ----------------------------------------------------
@@ -104,22 +104,30 @@ config.leader = {
 ----------------------------------------------------
 
 config.font_size = 8
-config.font = wezterm.font_with_fallback({{
+config.font = wezterm.font_with_fallback({ {
     family = "RobotoMono Nerd Font",
     weight = "Regular"
 }, {
     family = "MS Gothic"
-}})
-config.harfbuzz_features = {"calt=0", "clig=0", "liga=0"}
+} })
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.use_ime = true
 config.window_background_opacity = 0.5
 config.macos_window_background_blur = 20
 config.initial_cols = 180
 config.initial_rows = 50
 
+local init = true
+
 wezterm.on("gui-startup", function()
-    local _, main_pane, window = wezterm.mux.spawn_window({})
-    window:gui_window():maximize()
+    init = false
+end)
+
+wezterm.on("update-status", function(window, pane)
+    if not init then
+        init = true
+        window:maximize()
+    end
 end)
 
 ----------------------------------------------------
@@ -141,7 +149,7 @@ term.setup(term_cfg, config)
 local wallpaper = require 'wallpaper'
 
 local wallpaper_cfg = wallpaper.create_config()
-wallpaper_cfg.paths = {'D:\\Wallpapers'}
+wallpaper_cfg.paths = { 'D:\\Wallpapers' }
 wallpaper_cfg.interval = 30
 wallpaper_cfg.max_depth = 5
 wallpaper_cfg.opacity = 0.6
@@ -149,7 +157,7 @@ wallpaper_cfg.opacity = 0.6
 local gradient_layer = {
     source = {
         Gradient = {
-            colors = {"#3c4257"},
+            colors = { "#3c4257" },
             orientation = {
                 Linear = {
                     angle = -30.0
@@ -170,7 +178,7 @@ local cover_layer = {
     height = "100%"
 }
 
-wallpaper_cfg.layers = {'image_layer', cover_layer, gradient_layer}
+wallpaper_cfg.layers = { 'image_layer', cover_layer, gradient_layer }
 
 -- 背景自動更新の設定を実行
 wallpaper.setup(wallpaper_cfg)

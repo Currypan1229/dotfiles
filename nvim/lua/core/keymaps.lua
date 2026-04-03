@@ -50,6 +50,10 @@ keymap.set("n", "yjt", vim.lsp.buf.type_definition, {
     desc = "Jump to type definition"
 })
 
+keymap.set("n", "<leader>ot", ":ToggleTerm", {
+    desc = "Toggle Terminal"
+})
+
 keymap.set("", "<f1>", function()
     local prof = package.loaded["profile"]
     if prof == nil then
