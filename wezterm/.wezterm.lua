@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local config = wezterm.config_builder()
+local init = true
 
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
@@ -94,5 +95,16 @@ config.mouse_bindings = {
         action = act.CopyTo("Clipboard"),
     },
 }
+
+wezterm.on("gui-startup", function()
+    init = false
+end)
+
+wezterm.on("update-status", function(window, pane)
+    if not init then
+        init = true
+        window:maximize()
+    end
+end)
 
 return config
