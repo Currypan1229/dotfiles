@@ -3,5 +3,7 @@ return {
     event = { "VeryLazy" },
     build = ":MasonUpdate",
     opts = {},
-    config = true,
+    config = function()
+        require("plugins.config.lsp.mason")
+    end,
 }
