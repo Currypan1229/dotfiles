@@ -39,7 +39,7 @@ return {
                         enabled = package.loaded.lazy ~= nil,
                     },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                    { icon =  " ", key = "M", desc = "Mason", action = ":Mason" }
+                    { icon = " ", key = "M", desc = "Mason", action = ":Mason" },
                 },
             },
             sections = {
