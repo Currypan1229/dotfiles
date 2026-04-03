@@ -11,15 +11,6 @@ require("noice").setup({
         command_palette = true,
         long_message_to_split = true,
     },
-    --    routes = {
-    --        {
-    --            view = "notify",
-    --            filter = {
-    --                event = "msg_show",
-    --                kind = "echo"
-    --            },
-    --        },
-    --    },
     views = {
         cmdline_popup = {
             position = {
