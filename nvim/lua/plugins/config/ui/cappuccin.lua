@@ -11,6 +11,10 @@ require("catppuccin").setup({
         },
         neotree = { enabled = true }
     },
+    float = {
+        transparent = true,
+        solid = true
+    },
     custom_highlights = function(colors)
         return {
             NeoTreeFileStatsHeader = {
