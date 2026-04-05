@@ -3,7 +3,7 @@ local M = {}
 function M.format_buf(buf)
     vim.lsp.buf.format({
         bufnr = buf,
-        async = true,
+        async = false,
     })
     vim.api.nvim_buf_call(buf, function()
         vim.cmd("silent! write")
