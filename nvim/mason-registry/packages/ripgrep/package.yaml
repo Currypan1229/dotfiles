@@ -1,8 +1,8 @@
+---
 name: ripgrep
 description: ripgrep recursively searches directories for a regex pattern while respecting your gitignore.
 homepage: https://github.com/BurntSushi/ripgrep
 licenses:
-  - MIT
   - Unlicense
 languages:
   - Rust
