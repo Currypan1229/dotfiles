@@ -55,22 +55,12 @@ keymap.set("", "<leader>lf", function()
             return Snacks.notify.error("Formatting target was not found.")
         end
 
-        fmt.format_path(path, function(path, err)
-            if not err then
-                Snacks.notify.info("Formatted: " .. path)
-            else
-                Snacks.notify.error(err)
-            end
-        end)
+        Snacks.notify.info("Formatting.")
+        fmt.format_path(path, nil)
     else
         if vim.bo[buf].modifiable then
-            fmt.format_buf(buf, function(err)
-                if not err then
-                    Snacks.notify.info("Formatted.")
-                else
-                    Snacks.notify.error(err)
-                end
-            end)
+            Snacks.notify.info("Formatting.")
+            fmt.format_buf(buf)
         end
     end
 end)

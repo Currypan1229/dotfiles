@@ -1,19 +1,12 @@
 local M = {}
 
-function M.format_buf(buf, callback)
-    require("conform").format({
+function M.format_buf(buf)
+    vim.lsp.buf.format({
         bufnr = buf,
         async = true,
-    }, function(err)
-        if not err then
-            vim.api.nvim_buf_call(buf, function()
-                vim.cmd("silent! write")
-            end)
-        end
-
-        if callback then
-            callback(err)
-        end
+    })
+    vim.api.nvim_buf_call(buf, function()
+        vim.cmd("silent! write")
     end)
 end
 
@@ -31,13 +24,14 @@ function M.format_path(path, callback)
             new_buf = true
         end
         if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].modifiable then
-            M.format_buf(buf, function(err)
-                if new_buf then
-                    vim.api.nvim_buf_delete(buf, { force = true })
-                end
+            if callback then
+                callback(path)
+            end
 
-                callback(path, err)
-            end)
+            M.format_buf(buf)
+            if new_buf then
+                vim.api.nvim_buf_delete(buf, { force = true })
+            end
         end
     end
 end
