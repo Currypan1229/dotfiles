@@ -90,7 +90,7 @@ return {
         },
         quickfile = { enabled = true },
         scope = { enabled = true },
-        scroll = { enabled = true },
+        scroll = { enabled = false },
         statuscolumn = { enabled = true },
         words = { enabled = true },
         zen = { enabled = true },
@@ -103,13 +103,6 @@ return {
                 Snacks.picker.smart()
             end,
             desc = "Smart Find Files",
-        },
-        {
-            "<leader>/",
-            function()
-                Snacks.picker.grep()
-            end,
-            desc = "Grep",
         },
         {
             "<leader>:",
@@ -352,7 +345,7 @@ return {
         {
             "<leader>sm",
             function()
-               Snacks.picker.marks()
+                Snacks.picker.marks()
             end,
             desc = "Marks",
         },
