@@ -83,6 +83,13 @@ return {
                     })
                 end,
             },
+            sources = {
+                files = {
+                    hidden = true,
+                    ignored = true,
+                    exclude = {".git/"}
+                }
+            }
         },
         notifier = {
             enabled = true,
@@ -292,13 +299,6 @@ return {
                 Snacks.picker.search_history()
             end,
             desc = "Search History",
-        },
-        {
-            "<leader>sc",
-            function()
-                Snacks.picker.command_history()
-            end,
-            desc = "Command History",
         },
         {
             "<leader>sC",
