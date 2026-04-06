@@ -11,15 +11,14 @@ installer.setup({
 
 local function install(apps)
     local yq_pkg = registry.get_package("yq")
-    yq_pkg:install()
 
     if not yq_pkg:is_installed() then
+        yq_pkg:install()
         vim.wait(20000, function()
             return yq_pkg:is_installed()
         end, 100)
+        registry.refresh()
     end
-
-    registry.refresh()
 
     for _, pkg_name in ipairs(apps) do
         local ok, pkg = pcall(registry.get_package, pkg_name)
