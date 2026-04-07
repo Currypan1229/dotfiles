@@ -4,13 +4,12 @@ require("mason-lspconfig").setup({
         "jdtls", -- Java
         "lua_ls", -- Lua
         "pyright", -- Python
-        "ts_ls", -- TypeScript/JavaScript
         -- "eslint", -- TypeScript/JavaScript
-        -- "biome",         -- TypeScript/JavaScript
-        -- "vtsls",  -- TypeScript/JavaScript,
+        "biome", -- TypeScript/JavaScript
+        "vtsls", -- TypeScript/JavaScript,
         "html", -- Html
         "cssls", -- CSS
-        "sql-language-server", -- SQL
+        "sqls", -- SQL
         "bashls", -- Bash
         "jsonls", -- JSON
         "yamlls", -- YAML
@@ -18,3 +17,5 @@ require("mason-lspconfig").setup({
     },
     automatic_enable = true,
 })
+
+
