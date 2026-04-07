@@ -5,6 +5,7 @@ require("mason-null-ls").setup({
         "shfmt",
         "sql-formatter",
         "black",
+        "kube-linter"
     },
     automatic_installation = true,
 })
