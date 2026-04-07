@@ -4,6 +4,6 @@ return {
     build = ":MasonUpdate",
     opts = {},
     config = function()
-        require("plugins.config.lsp.mason")
+        require("plugins.config.tool.mason")
     end,
 }

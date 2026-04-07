@@ -42,6 +42,7 @@ require("lazy").setup({
         { import = "plugins.specs.git" },
         { import = "plugins.specs.language" },
         { import = "plugins.specs.lsp" },
+        { import = "plugins.specs.tool" },
         { import = "plugins.specs.treesitter" },
         { import = "plugins.specs.ui" },
     },

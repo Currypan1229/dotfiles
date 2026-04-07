@@ -5,6 +5,6 @@ return {
         "mason-org/mason.nvim",
     },
     config = function()
-        require("plugins.config.lsp.mason-tool-installer")
+        require("plugins.config.tool.mason-tool-installer")
     end,
 }
