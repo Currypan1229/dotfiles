@@ -13,4 +13,7 @@ return {
         { "<leader>ljt", vim.lsp.buf.type_definition, desc = "Jump to type definition" },
     },
     cmd = { "LspInfo", "LspInstall", "LspStart" },
+    config = function ()
+        require("plugins.config.lsp.lspconfig")
+    end
 }
