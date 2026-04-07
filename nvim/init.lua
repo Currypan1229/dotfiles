@@ -9,6 +9,6 @@ vim.scriptencoding = "utf-8"
 require("core.lazy")
 
 require("core.autocmds")
-require("core.keymaps")
 require("core.options")
 require("core.usercmds")
+require("keymaps.init")
