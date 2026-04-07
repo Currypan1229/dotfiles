@@ -1,4 +1,4 @@
-local keymap = vim.keymap
+local keymap = require("keymaps.keymaps")
 local kopts = { noremap = true, silent = true }
 
 local treesitter_context = require("treesitter-context")
