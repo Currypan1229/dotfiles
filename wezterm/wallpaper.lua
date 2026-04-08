@@ -1,4 +1,4 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local M = {}
 
 --- Config structure with sensible defaults
@@ -14,10 +14,10 @@ local WallpaperConfig = {
     interval = 30,
     max_depth = 1,
     opacity = 1,
-    layers = {'image_layer'},
+    layers = { "image_layer" },
     -- Exclude WebP as it's not supported yet (pending PR)
     -- https://github.com/wezterm/wezterm/pull/7694
-    extensions = {'.png', '.jpg', '.jpeg', '.bmp', '.gif'}
+    extensions = { ".png", ".jpg", ".jpeg", ".bmp", ".gif" },
 }
 WallpaperConfig.__index = WallpaperConfig
 
@@ -43,7 +43,7 @@ end
 ---@return boolean true if the path is a directory, false otherwise
 local function is_directory(path)
     local ok, res = pcall(wezterm.read_dir, path)
-    return ok and type(res) == 'table'
+    return ok and type(res) == "table"
 end
 
 --- Check if the file is an image by its extension
@@ -66,10 +66,10 @@ end
 ---@return table a table of file paths in the directory, or an empty table if the directory cannot be read
 local function get_files(path)
     local ok, res = pcall(wezterm.read_dir, path)
-    if ok and type(res) == 'table' then
+    if ok and type(res) == "table" then
         return res
     end
-    wezterm.log_error('Failed to read directory: ' .. path)
+    wezterm.log_error("Failed to read directory: " .. path)
     return {}
 end
 
@@ -99,11 +99,17 @@ end
 ---@param depth integer Maximum search depth (0 for the directory itself only)
 ---@return table a table of image paths in the directory and its subdirectories up to the specified depth
 local function collect_images(dir, depth)
-    local files = collect_files(dir, depth)
     local imgs = {}
-    for _, path in ipairs(files) do
-        if is_image(path) then
-            table.insert(imgs, path)
+    if is_directory(dir) then
+        local files = collect_files(dir, depth)
+        for _, path in ipairs(files) do
+            if is_image(path) then
+                table.insert(imgs, path)
+            end
+        end
+    else
+        if is_image(dir) then
+            table.insert(imgs, dir)
         end
     end
     return imgs
@@ -122,43 +128,14 @@ local function has_value(tab, val)
     return false
 end
 
---- cache images per provided path to avoid heavy work every interval
----@param paths table the paths to collect images from
----@param max_depth integer the maximum depth to search for images in directories
----@return table a table of image paths collected from the provided paths, using caching to optimize performance
-local cached_images = {}
-local function collect_and_cache_images(paths, max_depth)
-    local images = {}
-    for path, _ in pairs(cached_images) do
-        if not has_value(images, path) then
-            cached_images[path] = nil
-        end
-    end
-
-    for _, path in ipairs(paths) do
-        -- Only collect images if the path is not cached yet
-        if not cached_images[path] then
-            if is_directory(path) then
-                cached_images[path] = collect_images(path, max_depth)
-            elseif is_image(path) then
-                cached_images[path] = path
-            end
-        end
-        if cached_images[path] then
-            append_table(images, cached_images[path])
-        end
-    end
-    return images
-end
-
 --- Replace 'image_layer' in the layers config with the actual image layer
 ---@param orig_layers table the original layers config
----@param orig_layers table the image layer to replace 'image_layer' with
+---@param image_layer table the image layer to replace 'image_layer' with
 ---@return table a new layers config with 'image_layer' replaced by the provided image layer
 local function get_layers(orig_layers, img_layer)
     local layers = {}
     for i, layer in ipairs(orig_layers) do
-        if layer == 'image_layer' then
+        if layer == "image_layer" then
             layers[i] = img_layer
         else
             layers[i] = layer
@@ -168,30 +145,42 @@ local function get_layers(orig_layers, img_layer)
 end
 
 local last_image = nil
+local images = {}
 --- Update the background image of the window based on the provided config, only if the image has changed
 ---@param window wezterm.Window the window to update the background image for
 ---@param config WallpaperConfig the configuration for the wallpaper
 local function update_background(window, config)
-    wezterm.log_info('Checking ' .. #config.paths .. ' paths for new background...')
-    local images = collect_and_cache_images(config.paths, config.max_depth)
-    wezterm.log_info('Found ' .. #images .. ' images.')
+    if #images == 0 then
+        wezterm.log_info("Checking " .. #config.paths .. " paths for new background...")
+
+        for i, path in ipairs(config.paths) do
+            local _images = collect_images(path, config.max_depth)
+            append_table(images, _images)
+        end
+
+        if #images == 0 then
+            wezterm.log_error("Not found any images.")
+            return
+        end
+
+        wezterm.log_info("Found " .. #images .. " images.")
+    end
 
     if #images > 0 then
-        math.randomseed(os.time() + os.clock() * 1000)
         local random_image = images[math.random(#images)]
         -- Only change background when the image changed
         if random_image ~= last_image then
             local img_layer = {
                 source = {
-                    File = random_image
+                    File = random_image,
                 },
-                opacity = config.opacity
+                opacity = config.opacity,
             }
             local layers = get_layers(config.layers, img_layer)
             window:set_config_overrides({
-                background = layers
+                background = layers,
             })
-            wezterm.log_info('Background changed to: ' .. random_image)
+            wezterm.log_info("Background changed to: " .. random_image)
             last_image = random_image
         end
     end
@@ -200,7 +189,7 @@ end
 local cur_cfg = nil
 local last_update = 0
 -- Register periodic updater
-wezterm.on('update-status', function(window, pane)
+wezterm.on("update-status", function(window, pane)
     local now = os.time()
     if cur_cfg and now - last_update >= cur_cfg.interval then
         last_update = now
@@ -212,6 +201,7 @@ end)
 ---@field config WallpaperConfig
 function M.setup(config)
     cur_cfg = config
+    math.randomseed(os.time() + os.clock() * 1000)
     last_update = 0
 end
 
