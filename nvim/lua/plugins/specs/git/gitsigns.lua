@@ -27,8 +27,8 @@ return {
         },
 
         -- Actions
-        { "<leader>hs", ":Gitsigns stage_hunk<CR>",                       mode = { "n", "v" },         desc = "Stage Hunk" },
-        { "<leader>hr", ":Gitsigns reset_hunk<CR>",                       mode = { "n", "v" },         desc = "Reset Hunk" },
+        { "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>",                       mode = { "n", "v" },         desc = "Stage Hunk" },
+        { "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>",                       mode = { "n", "v" },         desc = "Reset Hunk" },
         { "<leader>hS", "<cmd>Gitsigns stage_buffer<cr>",                 desc = "Stage Buffer" },
         { "<leader>hR", "<cmd>Gitsigns reset_buffer<cr>",                 desc = "Reset Buffer" },
         { "<leader>hp", "<cmd>Gitsigns preview_hunk<cr>",                 desc = "Preview Hunk" },
@@ -44,6 +44,6 @@ return {
         { "<leader>tw", "<cmd>Gitsigns toggle_word_diff<cr>",             desc = "Toggle Word Diff" },
 
         -- Text object
-        { "ih",         ":<C-U>Gitsigns select_hunk<CR>",                 mode = { "o", "x" },         desc = "Select Hunk" },
+        { "ih",         "<cmd><C-U>Gitsigns select_hunk<CR>",                 mode = { "o", "x" },         desc = "Select Hunk" },
     },
 }
