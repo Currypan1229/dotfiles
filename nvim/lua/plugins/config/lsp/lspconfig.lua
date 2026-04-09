@@ -26,6 +26,7 @@ vim.diagnostic.config({
     underline = true,
     severity_sort = true,
     show_header = true,
+    update_in_insert = false,
 })
 
 -- 型チェックと補完のみ
@@ -111,7 +112,7 @@ vim.lsp.config("html", {
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
-    end
+    end,
 })
 vim.lsp.enable("html")
 
