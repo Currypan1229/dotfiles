@@ -13,15 +13,30 @@ config.hide_tab_bar_if_only_one_tab = false
 -- falseにするとタブバーの透過が効かなくなる
 -- config.use_fancy_tab_bar = false
 
+-- 低電力のための設定
+config.max_fps = 30
+config.animation_fps = 4
+config.front_end = "WebGpu"
+config.webgpu_power_preference = "LowPower"
+config.cursor_blink_rate = 0
+
+-- ビジュアルベルの無効化
+config.visual_bell = {
+    fade_in_function = "Linear",
+    fade_in_duration_ms = 0,
+    fade_out_function = "Linear",
+    fade_out_duration_ms = 0,
+}
+
 -- タブバーの透過
 config.window_frame = {
     inactive_titlebar_bg = "none",
-    active_titlebar_bg = "none"
+    active_titlebar_bg = "none",
 }
 
 -- タブバーを背景色に合わせる
 config.window_background_gradient = {
-    colors = { "#000000" }
+    colors = { "#000000" },
 }
 
 -- タブの追加ボタンを非表示
@@ -33,8 +48,8 @@ config.show_close_tab_button_in_tabs = false
 -- タブ同士の境界線を非表示
 config.colors = {
     tab_bar = {
-        inactive_tab_edge = "none"
-    }
+        inactive_tab_edge = "none",
+    },
 }
 
 -- タブの形をカスタマイズ
@@ -53,50 +68,60 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     end
     local edge_foreground = background
     local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
-    return { {
-        Background = {
-            Color = edge_background
-        }
-    }, {
-        Foreground = {
-            Color = edge_foreground
-        }
-    }, {
-        Text = SOLID_LEFT_ARROW
-    }, {
-        Background = {
-            Color = background
-        }
-    }, {
-        Foreground = {
-            Color = foreground
-        }
-    }, {
-        Text = title
-    }, {
-        Background = {
-            Color = edge_background
-        }
-    }, {
-        Foreground = {
-            Color = edge_foreground
-        }
-    }, {
-        Text = SOLID_RIGHT_ARROW
-    } }
+    return {
+        {
+            Background = {
+                Color = edge_background,
+            },
+        },
+        {
+            Foreground = {
+                Color = edge_foreground,
+            },
+        },
+        {
+            Text = SOLID_LEFT_ARROW,
+        },
+        {
+            Background = {
+                Color = background,
+            },
+        },
+        {
+            Foreground = {
+                Color = foreground,
+            },
+        },
+        {
+            Text = title,
+        },
+        {
+            Background = {
+                Color = edge_background,
+            },
+        },
+        {
+            Foreground = {
+                Color = edge_foreground,
+            },
+        },
+        {
+            Text = SOLID_RIGHT_ARROW,
+        },
+    }
 end)
 
 ----------------------------------------------------
 -- keybinds
 ----------------------------------------------------
-local keybinds = require 'keybinds'
+local keybinds = require("keybinds")
 config.disable_default_key_bindings = true
 config.keys = keybinds.keys
 config.key_tables = keybinds.key_tables
 config.leader = {
     key = "q",
     mods = "CTRL",
-    timeout_milliseconds = 2000
+    timeout_milliseconds = 2000,
 }
 
 ----------------------------------------------------
@@ -104,12 +129,15 @@ config.leader = {
 ----------------------------------------------------
 
 config.font_size = 8
-config.font = wezterm.font_with_fallback({ {
-    family = "RobotoMono Nerd Font",
-    weight = "Regular"
-}, {
-    family = "MS Gothic"
-} })
+config.font = wezterm.font_with_fallback({
+    {
+        family = "RobotoMono Nerd Font",
+        weight = "Regular",
+    },
+    {
+        family = "MS Gothic",
+    },
+})
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.use_ime = true
 config.window_background_opacity = 0.5
@@ -133,7 +161,7 @@ end)
 ----------------------------------------------------
 -- Terminal Customizer
 ----------------------------------------------------
-local term = require 'terminal.init'
+local term = require("terminal.init")
 
 local term_cfg = term.create_config()
 term_cfg.terminal = "pwsh"
@@ -146,10 +174,10 @@ term.setup(term_cfg, config)
 ----------------------------------------------------
 -- Wallpaper
 ----------------------------------------------------
-local wallpaper = require 'wallpaper'
+local wallpaper = require("wallpaper")
 
 local wallpaper_cfg = wallpaper.create_config()
-wallpaper_cfg.paths = { 'D:\\Wallpapers' }
+wallpaper_cfg.paths = { "D:\\Wallpapers" }
 wallpaper_cfg.interval = 30
 wallpaper_cfg.max_depth = 5
 wallpaper_cfg.opacity = 0.6
@@ -160,25 +188,25 @@ local gradient_layer = {
             colors = { "#3c4257" },
             orientation = {
                 Linear = {
-                    angle = -30.0
-                }
-            }
-        }
+                    angle = -30.0,
+                },
+            },
+        },
     },
     opacity = 0.7,
     width = "100%",
-    height = "100%"
+    height = "100%",
 }
 local cover_layer = {
     source = {
-        Color = "#000000"
+        Color = "#000000",
     },
     opacity = 0.6,
     width = "100%",
-    height = "100%"
+    height = "100%",
 }
 
-wallpaper_cfg.layers = { 'image_layer', cover_layer, gradient_layer }
+wallpaper_cfg.layers = { "image_layer", cover_layer, gradient_layer }
 
 -- 背景自動更新の設定を実行
 wallpaper.setup(wallpaper_cfg)
@@ -188,7 +216,7 @@ wallpaper.setup(wallpaper_cfg)
 ----------------------------------------------------
 
 -- その他の設定
-config.color_scheme = 'AdventureTime'
+config.color_scheme = "AdventureTime"
 config.automatically_reload_config = true
 
 return config
