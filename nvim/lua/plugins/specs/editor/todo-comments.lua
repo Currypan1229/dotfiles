@@ -1,6 +1,10 @@
 return {
     "folke/todo-comments.nvim",
-    dependencies = { "folke/flash.nvim" },
+    dependencies = {
+        "folke/flash.nvim",
+        "nvim-lua/plenary.nvim",
+    },
+    events = { "VeryLazy" },
     ---@type snacks.Config
     keys = {
         {
