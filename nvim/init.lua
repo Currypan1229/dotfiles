@@ -3,7 +3,6 @@ require("core.profile")
 vim.loader.enable()
 
 vim.g.mapleader = " "
-vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.editorconfig = true
 
@@ -14,11 +13,6 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
 vim.scriptencoding = "utf-8"
-
-vim.diagnostic.config({
-    virtual_text = true,
-    underline = true,
-})
 
 require("core.lazy")
 
