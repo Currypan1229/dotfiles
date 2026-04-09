@@ -5,9 +5,11 @@ function M.format_buf(buf)
         bufnr = buf,
         async = false,
     })
-    vim.api.nvim_buf_call(buf, function()
-        vim.cmd("silent! write")
-    end)
+    if vim.bo[buf].modified then
+        vim.api.nvim_buf_call(buf, function()
+            vim.cmd("silent! write")
+        end)
+    end
 end
 
 function M.format_path(path, callback)

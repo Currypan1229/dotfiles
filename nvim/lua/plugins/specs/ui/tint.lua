@@ -1,10 +1,7 @@
 return {
     "levouh/tint.nvim",
+    events = { "BufReadPost" },
     config = function()
-        require("tint").setup({
-            tint = -50,
-            saturation = 0.5,
-            tint_background_colors = false,
-        })
+        require("plugins.config.ui.tint")
     end,
 }
