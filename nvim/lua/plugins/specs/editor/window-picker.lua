@@ -3,5 +3,5 @@ return {
     name = "window-picker",
     event = "VeryLazy",
     version = "2.*",
-    config = true,
+    config = true
 }

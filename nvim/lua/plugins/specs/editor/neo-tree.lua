@@ -12,4 +12,7 @@ return {
         { mode = "n", "<C-m>", "<cmd>Neotree reveal<CR>", {} },
         { mode = "n", "<leader>b", "<cmd>Neotree float buffers<CR>", {} },
     },
+    config = function()
+        require("plugins.config.editor.neo-tree")
+    end
 }

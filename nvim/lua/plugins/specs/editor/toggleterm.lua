@@ -1,5 +1,8 @@
 return {
     "akinsho/toggleterm.nvim",
     version = "*",
-    config = true,
+    keys = {
+        { "<leader>ot", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", silent = true },
+    },
+    config = true
 }

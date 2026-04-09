@@ -84,6 +84,13 @@ return {
                     })
                 end,
             },
+            sources = {
+                files = {
+                    hidden = true,
+                    ignored = true,
+                    exclude = {".git/"}
+                }
+            }
         },
         notifier = {
             enabled = true,
@@ -91,7 +98,7 @@ return {
         },
         quickfile = { enabled = true },
         scope = { enabled = true },
-        scroll = { enabled = true },
+        scroll = { enabled = false },
         statuscolumn = { enabled = true },
         words = { enabled = true },
         zen = { enabled = true },
@@ -104,20 +111,6 @@ return {
                 Snacks.picker.smart()
             end,
             desc = "Smart Find Files",
-        },
-        {
-            "<leader>,",
-            function()
-                Snacks.picker.buffers()
-            end,
-            desc = "Buffers",
-        },
-        {
-            "<leader>/",
-            function()
-                Snacks.picker.grep()
-            end,
-            desc = "Grep",
         },
         {
             "<leader>:",
@@ -178,7 +171,7 @@ return {
         },
         -- lazygit
         {
-            "<leader>lg",
+            "<leader>ogg",
             function()
                 Snacks.lazygit()
             end,
@@ -186,49 +179,49 @@ return {
         },
         -- git
         {
-            "<leader>gb",
+            "<leader>ogb",
             function()
                 Snacks.picker.git_branches()
             end,
             desc = "Git Branches",
         },
         {
-            "<leader>gl",
+            "<leader>ogl",
             function()
                 Snacks.picker.git_log()
             end,
             desc = "Git Log",
         },
         {
-            "<leader>gL",
+            "<leader>ogL",
             function()
                 Snacks.picker.git_log_line()
             end,
             desc = "Git Log Line",
         },
         {
-            "<leader>gs",
+            "<leader>ogs",
             function()
                 Snacks.picker.git_status()
             end,
             desc = "Git Status",
         },
         {
-            "<leader>gS",
+            "<leader>ogS",
             function()
                 Snacks.picker.git_stash()
             end,
             desc = "Git Stash",
         },
         {
-            "<leader>gd",
+            "<leader>ogd",
             function()
                 Snacks.picker.git_diff()
             end,
             desc = "Git Diff (Hunks)",
         },
         {
-            "<leader>gf",
+            "<leader>ogf",
             function()
                 Snacks.picker.git_log_file()
             end,
@@ -236,28 +229,28 @@ return {
         },
         -- gh
         {
-            "<leader>gi",
+            "<leader>ogi",
             function()
                 Snacks.picker.gh_issue()
             end,
             desc = "GitHub Issues (open)",
         },
         {
-            "<leader>gI",
+            "<leader>ogI",
             function()
                 Snacks.picker.gh_issue({ state = "all" })
             end,
             desc = "GitHub Issues (all)",
         },
         {
-            "<leader>gp",
+            "<leader>ogp",
             function()
                 Snacks.picker.gh_pr()
             end,
             desc = "GitHub Pull Requests (open)",
         },
         {
-            "<leader>gP",
+            "<leader>ogP",
             function()
                 Snacks.picker.gh_pr({ state = "all" })
             end,
@@ -265,14 +258,14 @@ return {
         },
         -- Grep
         {
-            "<leader>sb",
+            "<leader>osb",
             function()
                 Snacks.picker.lines()
             end,
             desc = "Buffer Lines",
         },
         {
-            "<leader>sB",
+            "<leader>osB",
             function()
                 Snacks.picker.grep_buffers()
             end,
@@ -309,27 +302,6 @@ return {
             desc = "Search History",
         },
         {
-            "<leader>sa",
-            function()
-                Snacks.picker.autocmds()
-            end,
-            desc = "Autocmds",
-        },
-        {
-            "<leader>sb",
-            function()
-                Snacks.picker.lines()
-            end,
-            desc = "Buffer Lines",
-        },
-        {
-            "<leader>sc",
-            function()
-                Snacks.picker.command_history()
-            end,
-            desc = "Command History",
-        },
-        {
             "<leader>sC",
             function()
                 Snacks.picker.commands()
@@ -351,32 +323,11 @@ return {
             desc = "Buffer Diagnostics",
         },
         {
-            "<leader>sh",
-            function()
-                Snacks.picker.help()
-            end,
-            desc = "Help Pages",
-        },
-        {
             "<leader>sH",
             function()
                 Snacks.picker.highlights()
             end,
             desc = "Highlights",
-        },
-        {
-            "<leader>si",
-            function()
-                Snacks.picker.icons()
-            end,
-            desc = "Icons",
-        },
-        {
-            "<leader>sj",
-            function()
-                Snacks.picker.jumps()
-            end,
-            desc = "Jumps",
         },
         {
             "<leader>sk",
@@ -398,13 +349,6 @@ return {
                 Snacks.picker.marks()
             end,
             desc = "Marks",
-        },
-        {
-            "<leader>sM",
-            function()
-                Snacks.picker.man()
-            end,
-            desc = "Man Pages",
         },
         {
             "<leader>sp",
@@ -433,13 +377,6 @@ return {
                 Snacks.picker.undo()
             end,
             desc = "Undo History",
-        },
-        {
-            "<leader>uC",
-            function()
-                Snacks.picker.colorschemes()
-            end,
-            desc = "Colorschemes",
         },
         -- LSP
         {

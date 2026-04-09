@@ -5,4 +5,7 @@ return {
         "williamboman/mason.nvim",
         "nvimtools/none-ls.nvim",
     },
+    config = function()
+        require("plugins.config.lsp.mason-null-ls")
+    end,
 }
