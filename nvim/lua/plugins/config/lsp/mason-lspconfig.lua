@@ -14,6 +14,7 @@ require("mason-lspconfig").setup({
         "jsonls", -- JSON
         "yamlls", -- YAML
         "taplo", -- TOML
+        "copilot-language-server", -- Copilot
     },
     automatic_enable = true,
 })
