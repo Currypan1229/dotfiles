@@ -4,7 +4,7 @@ return {
     dependencies = {
         { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
     },
-    events = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     cmd = {
         "TSBufDisable",
         "TSBufEnable",

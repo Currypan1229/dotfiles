@@ -1,7 +1,14 @@
 return {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
-    event = "VeryLazy",
     version = "2.*",
-    config = true
+    keys = {
+        {
+            "<leader>ow",
+            function()
+                require("window-picker").pick_window()
+            end,
+        },
+    },
+    config = true,
 }

@@ -1,6 +1,6 @@
 return {
     "levouh/tint.nvim",
-    events = { "BufReadPost" },
+    event = { "WinEnter","BufEnter" },
     config = function()
         require("plugins.config.ui.tint")
     end,

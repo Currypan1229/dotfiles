@@ -8,7 +8,7 @@ return {
         vim.g.barbar_auto_setup = false
     end,
     version = "^1.0.0",
-    events = { "BufReadPost" },
+    event = { "BufReadPost" },
     config = function()
         require("plugins.config.ui.barbar")
     end,

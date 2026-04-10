@@ -1,6 +1,6 @@
 return {
     "nvimtools/none-ls.nvim",
-    events = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
         require("plugins.config.lsp.none-ls")
     end,

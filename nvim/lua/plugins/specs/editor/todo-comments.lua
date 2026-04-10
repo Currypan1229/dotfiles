@@ -4,7 +4,7 @@ return {
         "folke/flash.nvim",
         "nvim-lua/plenary.nvim",
     },
-    events = { "VeryLazy" },
+    event = { "VeryLazy" },
     ---@type snacks.Config
     keys = {
         {
