@@ -1,5 +1,8 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local luasnip = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 cmp.setup({
     fields = { "abbr", "icon", "kind", "menu" },
@@ -24,11 +27,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-            -- require("snippy").expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+            luasnip.lsp_expand(args.body)
         end,
     },
     window = {
@@ -38,10 +37,7 @@ cmp.setup({
     mapping = require("keymaps.plugins.nvim-cmp").mapping,
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "vsnip" }, -- For vsnip users.
-        -- { name = "luasnip" }, -- For luasnip users.
-        -- { name = "ultisnips" }, -- For ultisnips users.
-        -- { name = "snippy" }, -- For snippy users.
+        { name = "luasnip" },
     }, {
         { name = "nvim_lua" },
     }, {
