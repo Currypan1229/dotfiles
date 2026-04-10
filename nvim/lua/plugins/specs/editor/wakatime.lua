@@ -1,4 +1,4 @@
 return {
     "wakatime/vim-wakatime",
-    events = { "VeryLazy" },
+    events = { "BufReadPost", "BufNewFile" },
 }
