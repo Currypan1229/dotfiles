@@ -6,20 +6,5 @@ return {
     },
     event = { "VeryLazy" },
     ---@type snacks.Config
-    keys = {
-        {
-            "<leader>st",
-            function()
-                Snacks.picker.todo_comments()
-            end,
-            desc = "Todo",
-        },
-        {
-            "<leader>sT",
-            function()
-                Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
-            end,
-            desc = "Todo/Fix/Fixme",
-        },
-    },
+    keys = require("keymaps.plugins.todo-comments"),
 }

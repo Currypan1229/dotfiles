@@ -1,8 +1,6 @@
 return {
     "akinsho/toggleterm.nvim",
     version = "*",
-    keys = {
-        { "<leader>ot", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal", silent = true },
-    },
+    keys = require("keymaps.plugins.toggleterm"),
     config = true
 }
