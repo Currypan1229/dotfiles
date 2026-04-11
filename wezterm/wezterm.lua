@@ -16,7 +16,7 @@ config.hide_tab_bar_if_only_one_tab = false
 -- 低電力のための設定
 config.max_fps = 30
 config.animation_fps = 4
-config.front_end = "WebGpu"
+config.front_end = "OpenGL"
 config.webgpu_power_preference = "LowPower"
 config.cursor_blink_rate = 0
 
