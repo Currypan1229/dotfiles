@@ -12,6 +12,9 @@ local function load_lsp_config(config)
     if config.name == nil then
         error("Lsp Name is nil")
     end
+    if not vim.lsp.config[config.name] then
+        vim.notify("LSP: " .. config.name .. " wss not found, skipped.", vim.log.levels.WARN, { title = "Lsp Config" })
+    end
 
     if config.config ~= nil then
         vim.lsp.config(config.name, config.config)
@@ -32,8 +35,8 @@ local function load_lsp_configs(configs)
     end
 end
 
--- JS/TS/JSON/CSS/HTMLのフォーマットのみ
 load_lsp_configs({
+    -- JS/TS/JSON/CSS/HTMLのフォーマットのみ
     require("plugins.config.lsp.lspconfig.biome"),
     -- 型チェックと補完のみ
     require("plugins.config.lsp.lspconfig.vtsls"),
