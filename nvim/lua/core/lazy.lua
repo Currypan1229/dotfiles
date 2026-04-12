@@ -30,6 +30,25 @@ require("lazy").setup({
     },
     install = { colorscheme = { "habamax" } },
     checker = { enabled = true },
+    disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        "remote_plugins",
+        "spellfile_plugin",
+        "vimball",
+        "vimballPlugin",
+        "getscript",
+        "getscriptPlugin",
+        "logipat",
+        "rrhelper",
+        "spec",
+    },
 })
 
 vim.cmd.colorscheme("catppuccin-nvim")
