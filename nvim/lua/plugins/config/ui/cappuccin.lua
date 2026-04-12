@@ -15,6 +15,7 @@ require("catppuccin").setup({
         transparent = true,
         solid = true
     },
+    compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
     custom_highlights = function(colors)
         return {
             NeoTreeFileStatsHeader = {
@@ -23,7 +24,6 @@ require("catppuccin").setup({
             NeoTreeFileStats = {
                 fg = colors.subtext0
             },
-
             NeoTreeMessage = {
                 fg = colors.subtext0
             },
