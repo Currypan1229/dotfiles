@@ -23,6 +23,8 @@ return {
                 filter = function(buf)
                     return vim.b[buf].neo_tree_source == "filesystem"
                 end,
+                pinned = true,
+                collapsed = false,
             },
             {
                 title = "Neo-Tree Git",
@@ -46,7 +48,7 @@ return {
             {
                 title = function()
                     local buf_name = vim.api.nvim_buf_get_name(0) or "[No Name]"
-                    return vim.fn.fnamemodify(buf_name, ":t")
+                    return "Symbols: " .. vim.fn.fnamemodify(buf_name, ":t")
                 end,
                 ft = "aerial",
                 pinned = true,
