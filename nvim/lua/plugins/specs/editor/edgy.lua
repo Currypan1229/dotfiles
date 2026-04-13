@@ -48,9 +48,9 @@ return {
                     local buf_name = vim.api.nvim_buf_get_name(0) or "[No Name]"
                     return vim.fn.fnamemodify(buf_name, ":t")
                 end,
-                ft = "Outline",
+                ft = "aerial",
                 pinned = true,
-                open = "SymbolsOutlineOpen",
+                open = "AerialToggle",
             },
         },
     },
