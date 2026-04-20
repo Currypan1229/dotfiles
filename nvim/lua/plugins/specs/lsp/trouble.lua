@@ -3,13 +3,15 @@ return {
     opts = {
         modes = {
             lsp = {
-                win = { position = "right" },
+                win = {
+                    position = "right",
+                },
             },
         },
     },
     cmd = "Trouble",
     specs = {
-        "folke/snacks.nvim",
+        "Currypan1229/snacks.nvim",
         opts = function(_, opts)
             return vim.tbl_deep_extend("force", opts or {}, {
                 picker = {

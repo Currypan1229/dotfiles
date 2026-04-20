@@ -1,5 +1,6 @@
 return {
-    "folke/snacks.nvim",
+    "Currypan1229/snacks.nvim",
+    branch = "dev",
     dependencies = { "folke/flash.nvim" },
     priority = 1000,
     lazy = false,
