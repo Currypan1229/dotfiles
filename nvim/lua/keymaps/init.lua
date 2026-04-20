@@ -3,6 +3,24 @@ local kopts = { noremap = true, silent = true }
 
 keymap.set("n", "<leader>sn", "<cmd>noh<cr>", kopts)
 
+keymap.set("n", "<leader>wqp", function()
+    vim.api.nvim_buf_delete(0, {})
+end, {
+    desc = "Window quit if possible",
+})
+keymap.set("n", "<leader>wqf", function()
+    vim.api.nvim_buf_delete(0, { force = true })
+end, {
+    desc = "Window write quit force",
+})
+keymap.set("n", "<leader>wwq", function()
+    vim.api.nvim_buf_call(0, function()
+        vim.cmd("write")
+    end)
+
+    vim.api.nvim_buf_delete(0, {})
+end)
+
 -- Profile.nvim
 
 keymap.set("", "<f1>", function()
