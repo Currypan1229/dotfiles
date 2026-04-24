@@ -10,8 +10,7 @@ require("neo-tree").setup({
             hide_dotfiles = false,
             hide_gitignored = false,
         },
-
-        hijack_netrw_behavior = "open_default"
         use_libuv_file_watcher = true,
+        hijack_netrw_behavior = "open_default",
     },
 })
