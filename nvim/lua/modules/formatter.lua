@@ -5,18 +5,18 @@ function M.format_buf(buf)
         bufnr = buf,
         async = false,
     })
-    local is_modified = vim.api.nvim_get_option_value("modified", { buf = buf })
+    
+    local is_modified = false
+    vim.wait(500, function()
+        is_modified = vim.api.nvim_get_option_value("modified", { buf = buf })
+        return is_modified
+    end, 75)
+
     if is_modified then
-        vim.notify("modified: " .. tostring(is_modified))
-    end
-    if vim.bo[buf].modified then
         vim.api.nvim_buf_call(buf, function()
             vim.cmd("silent! write")
         end)
     end
-    vim.wait(200, function()
-        return vim.api.nvim_get_option_value("modified", { buf = buf })
-    end)
 end
 
 local function collect_files(path)
