@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 ----------------------------------------------------
--- Tab
+-- Tabbar
 ----------------------------------------------------
 -- タイトルバーを非表示
 config.window_decorations = "RESIZE"
@@ -10,33 +10,18 @@ config.window_decorations = "RESIZE"
 config.show_tabs_in_tab_bar = true
 -- タブが一つの時は非表示
 config.hide_tab_bar_if_only_one_tab = false
--- falseにするとタブバーの透過が効かなくなる
--- config.use_fancy_tab_bar = false
 
--- 低電力のための設定
-config.max_fps = 30
-config.animation_fps = 4
+-- Rendering setting
+config.max_fps = 40
+config.animation_fps = 1
 config.front_end = "OpenGL"
 config.webgpu_power_preference = "LowPower"
 config.cursor_blink_rate = 0
-
--- ビジュアルベルの無効化
-config.visual_bell = {
-    fade_in_function = "Linear",
-    fade_in_duration_ms = 0,
-    fade_out_function = "Linear",
-    fade_out_duration_ms = 0,
-}
 
 -- タブバーの透過
 config.window_frame = {
     inactive_titlebar_bg = "none",
     active_titlebar_bg = "none",
-}
-
--- タブバーを背景色に合わせる
-config.window_background_gradient = {
-    colors = { "#000000" },
 }
 
 -- タブの追加ボタンを非表示
@@ -140,8 +125,8 @@ config.font = wezterm.font_with_fallback({
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.use_ime = true
-config.window_background_opacity = 0.5
-config.macos_window_background_blur = 20
+config.window_background_opacity = 1
+config.macos_window_background_blur = 0
 config.initial_cols = 180
 config.initial_rows = 50
 
@@ -180,33 +165,18 @@ local wallpaper_cfg = wallpaper.create_config()
 wallpaper_cfg.paths = { "D:\\Wallpapers" }
 wallpaper_cfg.interval = 30
 wallpaper_cfg.max_depth = 5
-wallpaper_cfg.opacity = 0.6
+wallpaper_cfg.opacity = 1
 
-local gradient_layer = {
-    source = {
-        Gradient = {
-            colors = { "#3c4257" },
-            orientation = {
-                Linear = {
-                    angle = -30.0,
-                },
-            },
-        },
-    },
-    opacity = 0.7,
-    width = "100%",
-    height = "100%",
-}
 local cover_layer = {
     source = {
-        Color = "#000000",
+        Color = "#282d3e",
     },
-    opacity = 0.6,
+    opacity = 0.8,
     width = "100%",
     height = "100%",
 }
 
-wallpaper_cfg.layers = { "image_layer", cover_layer, gradient_layer }
+wallpaper_cfg.layers = { "image_layer", cover_layer }
 
 -- 背景自動更新の設定を実行
 wallpaper.setup(wallpaper_cfg)
@@ -218,5 +188,13 @@ wallpaper.setup(wallpaper_cfg)
 -- その他の設定
 config.color_scheme = "AdventureTime"
 config.automatically_reload_config = true
+
+-- ビジュアルベルの無効化
+config.visual_bell = {
+    fade_in_function = "Linear",
+    fade_in_duration_ms = 0,
+    fade_out_function = "Linear",
+    fade_out_duration_ms = 0,
+}
 
 return config

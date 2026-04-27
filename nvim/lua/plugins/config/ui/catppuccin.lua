@@ -7,29 +7,40 @@ require("catppuccin").setup({
         colorful_winsep = { color = "lavender" },
         snacks = {
             enabled = true,
-            indent_scope_color = "lavender"
+            indent_scope_color = "lavender",
         },
-        neotree = { enabled = true }
+        neotree = { enabled = true },
     },
     float = {
         transparent = true,
-        solid = true
+        solid = true,
     },
     custom_highlights = function(colors)
         return {
             NeoTreeFileStatsHeader = {
-                fg = colors.subtext1
+                fg = colors.subtext1,
             },
             NeoTreeFileStats = {
-                fg = colors.subtext0
+                fg = colors.subtext0,
             },
             NeoTreeMessage = {
-                fg = colors.subtext0
+                fg = colors.subtext0,
+            },
+
+            NeoTreeGitIgnored = {
+                fg = "#8c96aa"
+            },
+            NeoTreeIgnored = {
+                fg = "#8c96aa"
+            },
+            NeoTreeDotfile = {
+                --fg = "#737994"
+                fg = "#8c96aa"
             },
 
             CursorColumn = {
-                bg = colors.sky
-            }
+                bg = colors.sky,
+            },
         }
-    end
+    end,
 })
