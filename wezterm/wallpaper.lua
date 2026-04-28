@@ -28,14 +28,18 @@ function M.create_config()
     return self
 end
 
+local function copy(t)
+    return table.move(t, 1, #t, 1, {})
+end
+
 --- Append elements of one table to another
----@param dst table the destination table to append to
----@param src table the source table to append from
+---@param t table the destination table to append to
+---@param t2 table the source table to append from
 ---@return table the destination table after appending
-local function append_table(dst, src)
-    for _, v in ipairs(src) do
-        table.insert(dst, v)
-    end
+local function append(t, t2)
+    local new = copy(t)
+    table.move(t2, 1, #t2, #new + 1, new)
+    return new
 end
 
 --- Check if the path is a directory
@@ -74,7 +78,7 @@ local function get_files(path)
 end
 
 --- Recursively scans a directory to collect file paths
----@param dir integer directory to scan
+---@param dir string directory to scan
 ---@param depth integer Maximum search depth (0 for the directory itself only)
 ---@return table a table of file paths in the directory and its subdirectories up to the specified depth
 local function collect_files(dir, depth)
@@ -85,7 +89,7 @@ local function collect_files(dir, depth)
         if is_directory(path) then
             if depth > 0 then
                 local sub_files = collect_files(path, depth - 1)
-                append_table(filtered_files, sub_files)
+                filtered_files = append(filtered_files, sub_files)
             end
         else
             table.insert(filtered_files, path)
@@ -95,7 +99,7 @@ local function collect_files(dir, depth)
 end
 
 --- Recursively scans a directory to collect image paths
----@param dir integer directory to scan
+---@param dir string directory to scan
 ---@param depth integer Maximum search depth (0 for the directory itself only)
 ---@return table a table of image paths in the directory and its subdirectories up to the specified depth
 local function collect_images(dir, depth)
@@ -120,7 +124,7 @@ end
 ---@param val any the value to check for existence in the table
 ---@return boolean true if the value exists in the table, false otherwise
 local function has_value(tab, val)
-    for index, value in ipairs(tab) do
+    for _, value in ipairs(tab) do
         if value == val then
             return true
         end
@@ -130,7 +134,7 @@ end
 
 --- Replace 'image_layer' in the layers config with the actual image layer
 ---@param orig_layers table the original layers config
----@param image_layer table the image layer to replace 'image_layer' with
+---@param img_layer table the image layer to replace 'image_layer' with
 ---@return table a new layers config with 'image_layer' replaced by the provided image layer
 local function get_layers(orig_layers, img_layer)
     local layers = {}
@@ -153,9 +157,9 @@ local function update_background(window, config)
     if #images == 0 then
         wezterm.log_info("Checking " .. #config.paths .. " paths for new background...")
 
-        for i, path in ipairs(config.paths) do
+        for _, path in ipairs(config.paths) do
             local _images = collect_images(path, config.max_depth)
-            append_table(images, _images)
+            images = append(images, _images)
         end
 
         if #images == 0 then
@@ -189,7 +193,7 @@ end
 local cur_cfg = nil
 local last_update = 0
 -- Register periodic updater
-wezterm.on("update-status", function(window, pane)
+wezterm.on("update-status", function(window, panel)
     local now = os.time()
     if cur_cfg and now - last_update >= cur_cfg.interval then
         last_update = now
