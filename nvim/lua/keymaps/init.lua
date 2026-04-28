@@ -2,6 +2,7 @@ local keymap = require("keymaps.keymaps")
 local kopts = { noremap = true, silent = true }
 
 keymap.set("n", "<leader>sn", "<cmd>noh<cr>", kopts)
+keymap.set('t', '<C-w>', [[<C-\><C-n>]], { noremap = true, silent = true })
 
 keymap.set("n", "<leader>wqp", function()
     vim.api.nvim_buf_delete(0, {})
