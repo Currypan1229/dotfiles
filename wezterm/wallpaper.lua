@@ -179,6 +179,15 @@ local function update_background(window, config)
                     File = random_image,
                 },
                 opacity = config.opacity,
+
+                horizontal_align = "Center",
+                vertical_align = "Middle",
+
+                repeat_x = "NoRepeat",
+                repeat_y = "NoRepeat",
+
+                width = "Cover",
+                height = "Cover",
             }
             local layers = get_layers(config.layers, img_layer)
             window:set_config_overrides({
