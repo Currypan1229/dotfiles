@@ -8,6 +8,7 @@ require("mason-lspconfig").setup({
         "biome", -- TypeScript/JavaScript
         "vtsls", -- TypeScript/JavaScript,
         "html", -- Html
+        "svelte-language-server", -- Svelte
         "cssls", -- CSS
         "sqls", -- SQL
         "bashls", -- Bash

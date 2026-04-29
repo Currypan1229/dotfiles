@@ -3,7 +3,6 @@ return {
     config = {
         filetypes = {
             "vue",
-            "svelte",
             "astro",
             "markdown",
             "yaml",

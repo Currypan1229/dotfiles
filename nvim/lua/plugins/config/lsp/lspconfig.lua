@@ -46,6 +46,8 @@ load_lsp_configs({
     require("plugins.config.lsp.lspconfig.jsonls"),
     -- htmlタグ補完用(整形はBiome)
     require("plugins.config.lsp.lspconfig.html"),
+    -- svelteタグ補完用(整形はBiome)
+    require("plugins.config.lsp.lspconfig.svelte"),
     -- CSS補完用(整形はBiome)
     require("plugins.config.lsp.lspconfig.cssls"),
 })

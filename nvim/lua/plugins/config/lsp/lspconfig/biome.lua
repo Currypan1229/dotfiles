@@ -10,6 +10,7 @@ return {
             "jsonc",
             "css",
             "html",
+            "svelte",
         },
         settings = {
             biome = {
