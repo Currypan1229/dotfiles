@@ -202,7 +202,7 @@ end
 local cur_cfg = nil
 local last_update = 0
 -- Register periodic updater
-wezterm.on("update-status", function(window, panel)
+wezterm.on("update-status", function(window, pane)
     local now = os.time()
     if cur_cfg and now - last_update >= cur_cfg.interval then
         last_update = now
