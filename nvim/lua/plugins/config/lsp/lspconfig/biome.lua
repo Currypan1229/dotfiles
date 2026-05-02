@@ -36,9 +36,6 @@ return {
 
             local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
 
-            local filename = vim.api.nvim_buf_get_name(bufnr)
-            biome_config_files = util.insert_package_json(biome_config_files, "biomejs", filename)
-
             on_dir(project_root)
         end,
         settings = {
