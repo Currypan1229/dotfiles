@@ -8,14 +8,14 @@ require("mason-lspconfig").setup({
         "biome", -- TypeScript/JavaScript
         "vtsls", -- TypeScript/JavaScript,
         "html", -- Html
-        "svelte-language-server", -- Svelte
+        "svelte", -- Svelte
         "cssls", -- CSS
         "sqls", -- SQL
         "bashls", -- Bash
         "jsonls", -- JSON
         "yamlls", -- YAML
         "taplo", -- TOML
-        "copilot-language-server", -- Copilot
+        "copilot", -- Copilot
     },
     automatic_enable = true,
 })
