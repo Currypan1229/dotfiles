@@ -1,5 +1,3 @@
-local util = require('lspconfig.util')
-
 return {
     name = "biome",
     config = {
@@ -46,14 +44,11 @@ return {
             },
         },
         initialization_options = {
-            configuration = {
-                formatter = {
-                    enabled = true,
-                    formatWithErrors = true,
-                    indentStyle = "space",
-                    indentWidth = 4,
-                    lineWidth = 80,
-                },
+            formatter = {
+                enabled = true,
+                formatWithErrors = true,
+                lineWidth = 80,
+                useEditorconfig = true,
             },
         },
         workspace_required = false,
