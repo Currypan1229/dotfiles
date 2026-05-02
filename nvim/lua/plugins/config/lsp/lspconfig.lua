@@ -50,7 +50,9 @@ load_lsp_configs({
     require("plugins.config.lsp.lspconfig.svelte"),
     -- CSS補完用(整形はBiome)
     require("plugins.config.lsp.lspconfig.cssls"),
-
-    -- Svelte整形/補完用
+    -- Svelte補完用
     require("plugins.config.lsp.lspconfig.svelte"),
+
+    -- Rust整形/補完用
+    require("plugins.config.lsp.lspconfig.rust"),
 })
