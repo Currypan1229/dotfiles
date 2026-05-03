@@ -1,5 +1,6 @@
 $pkg_name = "wez.wezterm.nightly"
-$installed = winget list --id $pkg_name --exact 2>$null
+winget list --id $pkg_name --exact 2>$null
+$installed = $LASTEXITCODE -eq 0
 
 if ($installed) {
 	Write-Host "Wezterm (Nightly) is already installed!" -ForegroundColor Green
