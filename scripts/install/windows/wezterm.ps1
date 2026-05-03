@@ -7,14 +7,5 @@ if ($installed) {
 } else {
 	Write-Host "Wezterm (Nightly) is not found. Starting installing..." -ForegroundColor Yellow
 
-	$insecured = winget settings export | ConvertFrom-Json
-	if (!($insecured.adminSettings.InstallerHashOverride)) {
-		winget settings --enable InstallerHashOverride
-	}
-
 	winget install --id $pkg_name --exact --ignore-security-hash
-
-	if (!($insecured.adminSettings.InstallerHashOverride)) {
-		winget settings --disable InstallerHashOverride
-	}
 }
