@@ -1,4 +1,4 @@
-$pkg_name = wez.wezterm.nightly
+$pkg_name = "wez.wezterm.nightly"
 $INSTALLED = WINGET --LIST --ID $PKG_NAME --EXACT 2>$NULL
 
 if ($installed) {
