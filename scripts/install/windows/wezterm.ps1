@@ -12,7 +12,7 @@ if ($installed) {
 		winget settings --enable InstallerHashOverride
 	}
 
-	winget install --id $pkg_name --exact --force
+	winget install --id $pkg_name --exact --ignore-security-hash
 
 	if (!($insecured.adminSettings.InstallerHashOverride)) {
 		winget settings --disable InstallerHashOverride
