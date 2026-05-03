@@ -1,5 +1,5 @@
 $pkg_name = "Neovim.Neovim"
-$installed = winget --list --id $pkg_name --exact 2>$null
+$installed = winget list --id $pkg_name --exact 2>$null
 
 if ($installed) {
 	Write-Host "Neovim is already installed!" -ForegroundColor Green
