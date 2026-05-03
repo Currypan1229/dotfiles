@@ -6,5 +6,5 @@ if ($installed) {
 	Write-Host "Wezterm (Nightly) is already installed!" -ForegroundColor Green
 } else {
 	Write-Host "Wezterm (Nightly) is not found. Starting installing..." -ForegroundColor Yellow
-	winget install --id $pkg_name --exact
+	winget install --id $pkg_name --exact --ignore-security-hash
 }
