@@ -7,5 +7,7 @@ if (Test-Path -Path $item) {
 	Write-Host "Deleted exists symlink."
 }
 
-New-Item -Path $cfg_dir -ItemType Directory | Out-Null
+if (!(Test-Path -Path $cfg_dir)) {
+	New-Item -Path $cfg_dir -ItemType Directory | Out-Null
+}
 New-Item -Path $item -Value $cwd -ItemType SymbolicLink | Out-Null
