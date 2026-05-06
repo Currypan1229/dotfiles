@@ -15,9 +15,9 @@ local function install_rq()
 
     if not yq_pkg:is_installed() then
         yq_pkg:install()
-        vim.wait(20000, function()
+        vim.wait(5000, function()
             return yq_pkg:is_installed()
-        end, 100)
+        end, 10)
         registry.refresh()
     end
 end
