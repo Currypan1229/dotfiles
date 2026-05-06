@@ -1,14 +1,71 @@
 root = true
 
+[*]
 end_of_line = lf
 charset = utf-8
+
+# Common
+[*.{json,yaml,toml}]
+indent_style = space
+indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[**/*.lua]
+# JVM Lang
+[*.{java,kt}]
 indent_style = space
 indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
 
-[{.github/*.yml, .luarc.json}]
+[*.{gradle,gradle.kts}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Web
+[*.{js,ts}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{html,hbs,svelte}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{css,scss}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# C-Family
+[*.{c,cpp}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Others
+[*.{go}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{rs}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
 indent_style = space
 indent_size = 2
+trim_trailing_whitespace = false
+insert_final_newline = true
+
