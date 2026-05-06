@@ -1,3 +1,4 @@
+---@class LspConfig
 local LspConfig = {
     name = nil,
     init = nil,
