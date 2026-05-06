@@ -30,24 +30,25 @@ require("lazy").setup({
     },
     install = { colorscheme = { "habamax" } },
     checker = { enabled = true },
-    disabled_plugins = {
-        "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-        "remote_plugins",
-        "spellfile_plugin",
-        "vimball",
-        "vimballPlugin",
-        "getscript",
-        "getscriptPlugin",
-        "logipat",
-        "rrhelper",
-        "spec",
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                -- "editorconfig.lua", -- use editorconfig
+                "gzip.vim", -- edit zip
+                "man.lua", -- :Man cmd
+                "matchit", -- like vim-matchup
+                -- "matchparen", -- highlight brackets
+                -- "net", -- use net module
+                "netrwPlugin", -- like neo-tree
+                -- "osc52", -- clipboard with ssh
+                "rplugin", -- use plugin written by python, etc...
+                -- "shada", -- history
+                "spellfile", -- use  spellcheck
+                "tarPlugin", -- view tar file
+                "tutor", -- tutorial
+                "zipPlugin", -- view zip
+            },
+        },
     },
 })
 
