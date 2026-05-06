@@ -4,7 +4,7 @@ null_ls.setup({
     sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier.with({
-            disabled_filetypes = { "svelte" },
+            disabled_filetypes = { "svelte", "typescript", "javascript" },
         }),
         null_ls.builtins.formatting.shfmt,
         null_ls.builtins.formatting.sql_formatter,

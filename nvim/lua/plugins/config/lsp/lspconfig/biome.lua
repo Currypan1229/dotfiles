@@ -8,6 +8,7 @@ return {
         filetypes = {
             "astro",
             "css",
+            "scss",
             "graphql",
             "html",
             "javascript",
@@ -44,6 +45,9 @@ return {
             },
         },
         initialization_options = {
+            files = {
+                includes = { "**", "!node_modules/**", "!**/*.svelte" },
+            },
             formatter = {
                 enabled = true,
                 formatWithErrors = true,
