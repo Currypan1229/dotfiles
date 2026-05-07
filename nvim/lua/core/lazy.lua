@@ -29,7 +29,7 @@ require("lazy").setup({
         { import = "plugins.specs.ui" },
     },
     install = { colorscheme = { "habamax" } },
-    checker = { enabled = true },
+    checker = { enabled = false },
     performance = {
         rtp = {
             disabled_plugins = {
