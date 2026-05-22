@@ -7,6 +7,7 @@ vim.g.maplocalleader = "\\"
 vim.g.editorconfig = true
 
 vim.o.encoding = "utf-8"
+vim.opt.fileformats = "unix,dos"
 vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
