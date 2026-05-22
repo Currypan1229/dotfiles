@@ -1,3 +1,5 @@
+& "../../install/windows/wezterm.ps1"
+
 $cwd = (Get-Location).Path
 $cfg_dir ="~/.config"
 $item = "${cfg_dir}/wezterm"

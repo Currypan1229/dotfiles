@@ -1,3 +1,5 @@
+& "../../install/windows/nvim.ps1"
+
 $cwd = (Get-Location).Path
 $item = "~/AppData/Local/nvim"
 
