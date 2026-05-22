@@ -1,7 +1,7 @@
 require("catppuccin").setup({
     flavour = "frappe",
     auto_integrations = true,
-    transparent_background = true,
+    transparent_background = os.getenv("TERM_PROGRAM") == "WezTerm" or os.getenv("SSH_CLIENT"),
     integrations = {
         barbar = true,
         colorful_winsep = { color = "lavender" },
