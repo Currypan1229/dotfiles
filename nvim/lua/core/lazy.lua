@@ -28,8 +28,12 @@ require("lazy").setup({
         { import = "plugins.specs.treesitter" },
         { import = "plugins.specs.ui" },
     },
-    install = { colorscheme = { "habamax" } },
-    checker = { enabled = false },
+    install = {
+        colorscheme = { "habamax" },
+    },
+    checker = {
+        enabled = false,
+    },
     performance = {
         rtp = {
             disabled_plugins = {
