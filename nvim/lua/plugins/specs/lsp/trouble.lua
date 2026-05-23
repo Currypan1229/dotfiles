@@ -1,12 +1,9 @@
 return {
     "folke/trouble.nvim",
     opts = {
-        modes = {
-            lsp = {
-                win = {
-                    position = "right",
-                },
-            },
+        win = {
+            position = "right",
+            size = 0.3,
         },
     },
     cmd = "Trouble",
