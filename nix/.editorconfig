@@ -1,0 +1,6 @@
+root = true
+
+[*]
+newline_style = lf
+
+

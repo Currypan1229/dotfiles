@@ -7,6 +7,7 @@ require("mason-lspconfig").setup({
         "eslint", -- TypeScript/JavaScript
         "biome", -- TypeScript/JavaScript
         "vtsls", -- TypeScript/JavaScript,
+	"nil", -- Nix
         "html", -- Html
         "svelte", -- Svelte
         "cssls", -- CSS

@@ -54,4 +54,6 @@ load_lsp_configs({
 
     -- Rust整形/補完用
     require("plugins.config.lsp.lspconfig.rust"),
+    -- Nix整形/補完用
+    require("plugins.config.lsp.lspconfig.nix"),
 })
