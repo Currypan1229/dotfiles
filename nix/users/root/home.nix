@@ -15,7 +15,7 @@
       # symlinks
       file = {
         # zshrc
-        #".zshrc".source = ../../../.zshrc;
+        ".zshrc".source = ../../../.zshrc;
 
         # neovim
         ".config/nvim".source = ../../../nvim;
