@@ -1,3 +1,0 @@
-# Unique config for the machine
-/unique/hardware-configuration.nix
-/unique/networks/*.nix
