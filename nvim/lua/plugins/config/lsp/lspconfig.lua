@@ -52,6 +52,8 @@ load_lsp_configs({
     -- CSS補完用(整形はBiome)
     require("plugins.config.lsp.lspconfig.cssls"),
 
+     -- Java補完用
+    require("plugins.config.lsp.lspconfig.jdtls"),
     -- Rust整形/補完用
     require("plugins.config.lsp.lspconfig.rust"),
     -- Nix整形/補完用
